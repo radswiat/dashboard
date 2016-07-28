@@ -7,17 +7,22 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
+    "html-webpack-plugin": "^2.22.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1"
   },
   "devDependencies": {
     "html-webpack-plugin": "^2.22.0",
     "raw-loader": "^0.5.1",
+    "source-map-loader": "^0.1.5",
+    "ts-loader": "^0.8.2",
+    "tslint": "^3.14.0",
+    "typescript": "^1.8.10",
     "webpack": "^1.13.1"
   },
   "scripts": {
     "start": "webpack -d --watch",
-    "postinstall": "npm install -g typescript typings webpack"
+    "postinstall": "npm install -g typescript typings webpack & npm link typescript"
   },
   "keywords": [
     "rs"

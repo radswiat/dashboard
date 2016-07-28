@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/client",
+        "sourceMap": true,
+        "module": "commonjs",
+        "target": "es5",
+        "jsx": "react",
+
+        "removeComments": false,
+        "noImplicitAny": false
+    },
+    "files": [
+        "./typings/index.d.ts",
+        "./src/client/app/app.tsx"
+    ]
+}
