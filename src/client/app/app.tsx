@@ -14,4 +14,4 @@ class Hello extends React.Component<HelloProps, {}> {
 ReactDOM.render(
     <Hello compiler='TypeScript' framework='React' />,
     document.getElementById('app')
-);
+); 
