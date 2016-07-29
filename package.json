@@ -22,6 +22,7 @@
   },
   "scripts": {
     "start": "webpack -d --watch",
+    "build": "webpack -d",
     "postinstall": "npm install -g typescript typings webpack & npm link typescript"
   },
   "keywords": [
