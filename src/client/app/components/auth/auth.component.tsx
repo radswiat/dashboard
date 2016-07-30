@@ -13,7 +13,7 @@ export class Auth extends React.Component<{}, {}> {
         console.warn('Auth:login()');
         console.info(AuthService);
         AuthService.login();
-    }
+    }  
 
     render() {
         return (
