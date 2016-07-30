@@ -1,3 +1,4 @@
+/// <reference path="../../../typings/index.d.ts" />
 require('../index.html');
 import * as React       from 'react';
 import * as ReactDOM    from 'react-dom';
