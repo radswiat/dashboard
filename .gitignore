@@ -4,3 +4,4 @@ src/client/app/**/*.js
 /dev/
 /node_modules/
 /dist/
+/.idea/
