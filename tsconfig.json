@@ -5,11 +5,12 @@
         "module": "commonjs",
         "target": "es5",
         "jsx": "react",
-
         "removeComments": false,
-        "noImplicitAny": false
+        "noImplicitAny": false,
+        "noEmitOnError": true
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "typings"
     ]
 }

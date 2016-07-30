@@ -67,7 +67,7 @@ var config = [
     {
         //entry:  SERVER_DIR + '/server.js',
         entry: [
-            SERVER_DIR + '/server.js'
+            SERVER_DIR + '/server.ts'
         ],
         target: 'node',
         node: {
@@ -87,19 +87,9 @@ var config = [
         module: {
             loaders: [
                 {
-                    test : /\.js?/,
-                    include : SERVER_DIR,
-                    loader : 'babel'
+                    test: /\.ts?$/,
+                    loader: "ts-loader"
                 },
-                //{
-                //    test : /\.js?/,
-                //    include : SERVER_DIR,
-                //    loader : 'node'
-                //},
-                {
-                    test: /\.html$/,
-                    loader: "raw-loader"
-                }
             ]
         },
         externals: [nodeExternals()]
