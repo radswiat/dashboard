@@ -8,9 +8,5 @@
 
         "removeComments": false,
         "noImplicitAny": false
-    },
-    "files": [
-        "./typings/index.d.ts",
-        "./src/client/app/app.tsx"
-    ]
+    }
 }
