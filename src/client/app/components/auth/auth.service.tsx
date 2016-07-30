@@ -1,11 +1,16 @@
-
+declare var io;
 class AuthService {
     constructor() {
 
     }
 
     login() {
-        alert('service login attempt');
+        let socket = io();
+        console.log(socket);
+        socket.emit('login', 'kasia');
+        socket.on('loginResponse', function(msg){
+            alert(msg);
+        });
     }
 }
 

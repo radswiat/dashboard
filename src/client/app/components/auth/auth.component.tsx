@@ -1,7 +1,10 @@
 import * as React from 'react';
 import AuthService from './auth.service';
 
-export class Auth extends React.Component {
+
+interface IAuth { compiler: string; framework: string; }
+
+export class Auth extends React.Component<IAuth, {}> {
 
     constructor(props) {
         super(props);

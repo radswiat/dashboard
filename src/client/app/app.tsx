@@ -10,7 +10,7 @@ class Hello extends React.Component<HelloProps, {}> {
         return(
             <div>
                 <h1>Real Time Dashboard</h1>
-                <Auth />
+                <Auth></Auth>
             </div>
         );
     }
