@@ -10,6 +10,7 @@ class AuthService {
         socket.emit('login', 'kasia');
         socket.on('loginResponse', function(msg){
             alert(msg);
+            console.warn(msg);
         });
     }
 }
