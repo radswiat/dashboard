@@ -1,8 +1,6 @@
 /// <reference path="../../../../../typings/index.d.ts" />
-
 import * as React from 'react';
 import AuthService from './auth.service';
-
 
 export class Auth extends React.Component<{}, {}> {
 
