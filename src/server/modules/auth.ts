@@ -11,7 +11,7 @@ export default class ClientAuth {
     }
 
     events() {
-        this.sockets.event('login', () => {
+        this.sockets.event('auth:login', () => {
             console.warn('login attempt on server!');
         });
     }
