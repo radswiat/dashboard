@@ -1,11 +1,10 @@
 /// <reference path="../../typings/index.d.ts" />
-'use strict';
 
 import * as express from 'express';
 import * as http    from 'http';
 import * as io      from 'socket.io';
-import * as db from './db';
-
+import * as db      from './db';
+import {Sockets} from './sockets';
 
 /**
  * The server.
@@ -15,6 +14,7 @@ import * as db from './db';
 class Server {
 
     public app: express.Application;
+    private http;
 
     /**
      * Bootstrap the application.
@@ -23,7 +23,7 @@ class Server {
      * @static
      * @return {ng.auto.IInjectorService} Returns the newly created injector for this app.
      */
-    public static bootstrap(): Server {
+    public static bootstrap():Server {
         return new Server();
     }
 
@@ -37,6 +37,8 @@ class Server {
         //create expressjs application
         this.app = express();
 
+        this.http = (<any>http).Server(this.app);
+
         //configure application
         this.config();
 
@@ -44,6 +46,9 @@ class Server {
 
         // start db
         db.Mongo.bootstrap();
+
+        // start sockets
+        Sockets.bootstrap(this.http);
     }
 
     /**
@@ -52,12 +57,11 @@ class Server {
      */
     config() {
 
-        this.app.get('/', function(req, res){
+        this.app.get('/', function (req, res) {
             res.sendFile(__dirname + '/public/index.html');
         });
 
         this.app.use(express.static('public'));
-
     }
 
 
@@ -66,7 +70,7 @@ class Server {
      * @method port
      */
     port() {
-        (<any>http).Server(this.app).listen(3000, function(){
+        this.http.listen(3000, function () {
             console.log('listening on *:3000');
         });
     }
