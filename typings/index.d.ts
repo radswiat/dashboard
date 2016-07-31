@@ -11,7 +11,6 @@
 /// <reference path="globals/react/index.d.ts" />
 /// <reference path="globals/serve-static/index.d.ts" />
 /// <reference path="globals/socket.io/index.d.ts" />
-/// <reference path="globals/react-valuelink/index.d.ts" />
 /// <reference path="modules/mime/index.d.ts" />
 /// <reference path="modules/mongodb/index.d.ts" />
 /// <reference path="modules/redis/index.d.ts" />

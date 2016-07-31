@@ -1,40 +1,57 @@
 /// <reference path="../../typings/index.d.ts" />
 import mongodb = require('mongodb');
+import * as Q from 'Q';
 
 let instance = null;
 
-module DB {
 
-    export class Mongo {
+export default class DB {
 
-        private db;
+    private db;
 
-        static instance() {
-            if (!instance) {
-                return new Mongo();
-            }
-            return instance;
+    static instance() {
+        if (!instance) {
+            return new DB();
         }
-
-        constructor() {
-            let url = 'mongodb://localhost:27017/my_database_name';
-            this.db = mongodb.MongoClient;
-            this.db.connect(url, function (err, db) {
-                if (err) {
-                    console.log('Unable to connect to the mongoDB server. Error:', err);
-                } else {
-                    //HURRAY!! We are connected. :)
-                    console.log('Connection established to', url);
-
-                    // do some work here with the database.
-
-                    //Close connection
-                    db.close();
-                }
-            });
-        }
+        return instance;
     }
 
-}
+    constructor() {
+        this.url = 'mongodb://localhost:27017/rtd';
+        this.db = mongodb.MongoClient;
+        this.db.connect(this.url, (err, db) => {
+            if (err) {
+                console.log('Unable to connect to the mongoDB server. Error:', err);
+            } else {
+                //HURRAY!! We are connected. :)
+                console.log('Connection established to', this.url);
 
-export = DB;
+                //Close connection
+                db.close();
+            }
+        });
+    }
+
+
+
+    query(cb) {
+        this.db.connect(this.url, (err, db) => {
+            if (err) {
+                console.log('Unable to connect to the mongoDB server. Error:', err);
+            } else {
+
+                let defer = Q.defer();
+
+                cb(db, defer);
+                //
+                // defer.promise.then(() => {
+                //     // db.close();
+                // });
+
+                db.close();
+
+            }
+        });
+
+    }
+}

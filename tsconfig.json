@@ -7,10 +7,14 @@
         "removeComments": false,
         "noImplicitAny": false,
         "noEmitOnError": false,
-        "noEmit": false
+        "noEmit": false,
+        "allowJs": true
     },
     "exclude": [
         "node_modules",
         "typings"
+    ],
+    "files": [
+        "typings/index.d.ts"
     ]
 }

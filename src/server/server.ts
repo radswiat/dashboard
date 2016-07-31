@@ -2,7 +2,7 @@
 
 import * as express from 'express';
 import * as http    from 'http';
-import * as db      from './db';
+import db from './db';
 import {Sockets} from './sockets';
 // import ClientAuth from './modules/auth';
 //import * as chalk from 'chalk';
@@ -77,7 +77,7 @@ class Server {
     }
 
     components() {
-        db.Mongo.instance();
+        db.instance();
         Sockets.instance(this.http);
     }
 

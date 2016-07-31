@@ -1,15 +1,9 @@
-/// <reference path="../../../../../typings/index.d.ts" />
 import * as React from 'react';
 import authService from './auth.service';
-import * as LinkedStateMixin from 'react-addons-linked-state-mixin';
-import * as reactMixin from 'react-mixin';
-// import * as Link from 'valuelink';
-// import {Input} from 'valuelink/tags.js';
+import Link from 'valuelink';
 
 
 class Auth extends React.Component<{}, {}> {
-
-    linkState: any;
 
     state: any = {
         username: '',
@@ -20,12 +14,14 @@ class Auth extends React.Component<{}, {}> {
         super();
     }
 
-    handleLogin(e) {
+    login(e) {
         e.preventDefault();
         let credentials = {
             username: this.state.username,
             password: this.state.password
         };
+        console.error('credentials');
+        console.info(credentials);
         authService.login(credentials);
     }
 
@@ -33,17 +29,14 @@ class Auth extends React.Component<{}, {}> {
         return (
             <form role='form'>
                 <fieldset className='form-group'>
-                    <input type='text' placeholder='Username' valueLink={this.linkState('username')}/>
-                    <input type='text' placeholder='Password' valueLink={this.linkState('password')}/>
+                    <input type='text' placeholder='Username' valueLink={ Link.state(this, 'username') }/>
+                    <input type='text' placeholder='Password' valueLink={ Link.state(this, 'password') }/>
                 </fieldset>
-                <button type='submit' onClick={this.handleLogin.bind(this)}>Submit</button>
+                <button type='submit' onClick={this.login.bind(this)}>Submit</button>
             </form>
         );
     }
 }
-
-// We’re using the mixin `LinkStateMixin` to have two-way databinding between our component and the HTML.
-reactMixin(Auth.prototype, LinkedStateMixin);
 
 export {Auth};
 
