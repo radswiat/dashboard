@@ -1,14 +1,19 @@
 /// <reference path="../../typings/index.d.ts" />
 import mongodb = require('mongodb');
 
+let instance = null;
+
 module DB {
 
     export class Mongo {
 
         private db;
 
-        static bootstrap() {
-            return new Mongo();
+        static instance() {
+            if (!instance) {
+                return new Mongo();
+            }
+            return instance;
         }
 
         constructor() {

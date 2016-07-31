@@ -27,4 +27,3 @@ export class Auth extends React.Component<{}, {}> {
         );
     }
 }
-

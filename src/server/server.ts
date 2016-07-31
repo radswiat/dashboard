@@ -2,9 +2,11 @@
 
 import * as express from 'express';
 import * as http    from 'http';
-import * as io      from 'socket.io';
 import * as db      from './db';
 import {Sockets} from './sockets';
+import ClientAuth from './modules/auth';
+//import * as chalk from 'chalk';
+
 
 /**
  * The server.
@@ -23,7 +25,7 @@ class Server {
      * @static
      * @return {ng.auto.IInjectorService} Returns the newly created injector for this app.
      */
-    public static bootstrap():Server {
+    public static bootstrap(): Server {
         return new Server();
     }
 
@@ -44,11 +46,10 @@ class Server {
 
         this.port();
 
-        // start db
-        db.Mongo.bootstrap();
+        this.components();
 
-        // start sockets
-        Sockets.bootstrap(this.http);
+        this.modules();
+
     }
 
     /**
@@ -73,6 +74,15 @@ class Server {
         this.http.listen(3000, function () {
             console.log('listening on *:3000');
         });
+    }
+
+    components() {
+        db.Mongo.instance();
+        Sockets.instance(this.http);
+    }
+
+    modules() {
+        new ClientAuth();
     }
 }
 

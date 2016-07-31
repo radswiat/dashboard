@@ -1,7 +1,18 @@
+/// <reference path="../../../typings/index.d.ts" />
+import {Sockets} from '../sockets';
 
+export default class ClientAuth {
 
-module Auth {
-    export class connect{
+    private sockets;
 
+    constructor() {
+        this.sockets = Sockets.instance();
+        this.events();
+    }
+
+    events() {
+        this.sockets.event('login', () => {
+            console.warn('login attempt on server!');
+        });
     }
 }

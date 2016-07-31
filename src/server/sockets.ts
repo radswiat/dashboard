@@ -1,12 +1,16 @@
 /// <reference path="../../typings/index.d.ts" />
 import * as io from 'socket.io';
+let instance = null;
 
 export class Sockets {
 
     private io;
 
-    static bootstrap(http) {
-        return new Sockets(http);
+    static instance(http?) {
+        if (!instance) {
+            return new Sockets(http);
+        }
+        return instance;
     }
 
     constructor(http) {
@@ -18,6 +22,12 @@ export class Sockets {
         console.log('Sockets:config');
         this.io.on('connection', function(socket){
             console.log('a user connected');
+        });
+    }
+
+    event(event, cb) {
+        this.io.on(event, function(data){
+            cb(data);
         });
     }
 
