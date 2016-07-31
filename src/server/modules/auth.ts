@@ -1,18 +1,22 @@
 /// <reference path="../../../typings/index.d.ts" />
-import {Sockets} from '../sockets';
 
 export default class ClientAuth {
 
     private sockets;
 
-    constructor() {
-        this.sockets = Sockets.instance();
-        this.events();
+    constructor(sockets) {
+        this.sockets = sockets;
+        this.sockets.on('auth:login', this.onAuthLogin.bind(this));
     }
 
-    events() {
-        this.sockets.event('auth:login', () => {
-            console.warn('login attempt on server!');
-        });
+    onAuthLogin(data) {
+        console.warn('login attempt on server!');
+        console.info(data);
+        this.emitAuthLogin();
+    }
+
+    emitAuthLogin() {
+        console.log('emit true');
+        this.sockets.emit('auth:login:response', true);
     }
 }

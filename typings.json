@@ -4,6 +4,7 @@
     "express-serve-static-core": "registry:dt/express-serve-static-core#4.0.0+20160715232503",
     "mysql": "registry:dt/mysql#0.0.0+20160316155526",
     "node": "registry:env/node#4.0.0+20160723033700",
+    "q": "registry:dt/q#0.0.0+20160613154756",
     "react": "registry:dt/react#0.14.0+20160720060442",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
     "serve-static": "registry:dt/serve-static#0.0.0+20160606155157",

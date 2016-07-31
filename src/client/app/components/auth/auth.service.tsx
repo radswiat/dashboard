@@ -1,17 +1,20 @@
 declare var io;
-class AuthService {
-    constructor() {
+let socket = io();
 
+class AuthService {
+
+    constructor() {
     }
 
     login() {
-        let socket = io();
-        console.warn('Auth.service:login2');
+        console.warn('Auth.service:login');
+        // console.info(io);
+        // console.info(socket);
         socket.emit('auth:login', 'kasia');
-        socket.on('auth:login:response', function(msg){
-            alert(msg);
+        socket.once('auth:login:response', function(msg){
             console.warn(msg);
         });
+
     }
 }
 

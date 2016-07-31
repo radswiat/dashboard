@@ -1,34 +1,49 @@
 /// <reference path="../../typings/index.d.ts" />
 import * as io from 'socket.io';
+import * as Q from 'q';
+import ClientAuth from './modules/auth';
+
 let instance = null;
 
 export class Sockets {
 
     private io;
+    // private socket;
 
+    /**
+     * Static get instance
+     * - singleton pattern
+     * @param http
+     * @returns {null}
+     */
     static instance(http?) {
         if (!instance) {
-            return new Sockets(http);
+            instance = new Sockets(http);
         }
         return instance;
     }
 
+    /**
+     * Constructor
+     * @param http
+     */
     constructor(http) {
+        // create IO
         this.io = io(http);
-        this.config();
+        // IO on connection
+        // nothing can be bind to io before first connection
+        this.io.on('connection', this.onNewConnection.bind(this));
     }
 
-    config() {
-        console.log('Sockets:config');
-        this.io.on('connection', function(socket){
-            console.log('a user connected');
-        });
-    }
+    onNewConnection(socket) {
+        console.warn('new connection!');
+        // this.socket = socket;
 
-    event(event, cb) {
-        this.io.on(event, function(data){
-            cb(data);
-        });
+        // init all modules
+        // TODO: move it ?
+        // each module has to be initialized for every new user
+        // as every user have different socket
+        new ClientAuth(socket);
     }
 
 }

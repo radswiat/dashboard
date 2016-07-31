@@ -13,6 +13,7 @@
     "mysql": "^2.11.1",
     "node-loader": "^0.5.0",
     "npm-watch": "^0.1.5",
+    "q": "^1.4.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "redis": "^2.6.2",
@@ -39,8 +40,11 @@
   },
   "watch": {
     "build": {
-      "patterns": ["src/**/**.tsx"],
-      "extensions": "tsx"
+      "patterns": [
+        "src/**/**.tsx",
+        "src/**/**.ts"
+      ],
+      "extensions": "ts,tsx"
     }
   },
   "keywords": [
