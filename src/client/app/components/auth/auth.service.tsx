@@ -6,7 +6,7 @@ class AuthService {
     constructor() {
     }
 
-    login() {
+    login(credentials) {
         console.warn('Auth.service:login');
         // console.info(io);
         // console.info(socket);

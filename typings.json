@@ -6,7 +6,10 @@
     "node": "registry:env/node#4.0.0+20160723033700",
     "q": "registry:dt/q#0.0.0+20160613154756",
     "react": "registry:dt/react#0.14.0+20160720060442",
+    "react-addons-linked-state-mixin": "registry:dt/react-addons-linked-state-mixin#0.14.0+20160316155526",
+    "react-addons-update": "registry:dt/react-addons-update#0.14.0+20160316155526",
     "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-mixin": "registry:dt/react-mixin#2.0.2+20160316155526",
     "serve-static": "registry:dt/serve-static#0.0.0+20160606155157",
     "socket.io": "registry:dt/socket.io#1.4.4+20160317120654"
   },

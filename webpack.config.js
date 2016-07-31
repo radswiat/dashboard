@@ -38,11 +38,11 @@ var config = [
                     test: /\.tsx?$/,
                     loader: "babel-loader!ts-loader"
                 },
-                //{
-                //    test : /\.jsx?/,
-                //    include : APP_DIR,
-                //    loader : 'babel'
-                //},
+                {
+                   test : /\.jsx?/,
+                   include : APP_DIR,
+                   loader : 'babel'
+                },
                 {
                     test: /\.html$/,
                     loader: "raw-loader"

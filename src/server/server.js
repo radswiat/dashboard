@@ -1,27 +1,31 @@
 /// <reference path="../../typings/index.d.ts" />
-'use strict';
-var express = require('express');
-var http = require('http');
-var db = require('./db');
+"use strict";
+const express = require('express');
+const http = require('http');
+const db = require('./db');
+const sockets_1 = require('./sockets');
+// import ClientAuth from './modules/auth';
+//import * as chalk from 'chalk';
 /**
  * The server.
  *
  * @class Server
  */
-var Server = (function () {
+class Server {
     /**
      * Constructor.
      *
      * @constructor
      */
-    function Server() {
+    constructor() {
         //create expressjs application
         this.app = express();
+        this.http = http.Server(this.app);
         //configure application
         this.config();
         this.port();
-        // start db
-        db.bootstrap();
+        this.components();
+        this.modules();
     }
     /**
      * Bootstrap the application.
@@ -30,29 +34,36 @@ var Server = (function () {
      * @static
      * @return {ng.auto.IInjectorService} Returns the newly created injector for this app.
      */
-    Server.bootstrap = function () {
+    static bootstrap() {
         return new Server();
-    };
+    }
     /**
      * Set up server config
      * @method config
      */
-    Server.prototype.config = function () {
+    config() {
         this.app.get('/', function (req, res) {
             res.sendFile(__dirname + '/public/index.html');
         });
         this.app.use(express.static('public'));
-    };
+    }
     /**
      * Set server port to use
      * @method port
      */
-    Server.prototype.port = function () {
-        http.Server(this.app).listen(3000, function () {
+    port() {
+        this.http.listen(3000, function () {
             console.log('listening on *:3000');
         });
-    };
-    return Server;
-}());
-var server = Server.bootstrap();
+    }
+    components() {
+        db.Mongo.instance();
+        sockets_1.Sockets.instance(this.http);
+    }
+    modules() {
+        // new ClientAuth();
+    }
+}
+let server = Server.bootstrap();
 module.exports = server.app;
+//# sourceMappingURL=server.js.map
