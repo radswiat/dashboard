@@ -4,10 +4,10 @@ class AuthService {
 
     }
 
-    login() {
+    login(credentials) {
         let socket = io();
-        console.log(socket);
-        socket.emit('login', 'kasia');
+        console.log(credentials);
+        socket.emit('credentials', credentials);
         socket.on('loginResponse', function(msg){
             alert(msg);
             console.warn(msg);
