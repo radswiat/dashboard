@@ -9,7 +9,6 @@ import * as reactMixin from 'react-mixin';
 
 class Auth extends React.Component<{}, {}> {
 
-    // mixins:[LinkedStateMixin];
     linkState: any;
 
     state: any = {
@@ -17,11 +16,8 @@ class Auth extends React.Component<{}, {}> {
         password: ''
     }
 
-
     constructor() {
         super();
-        console.error('auth');
-        console.info(this);
     }
 
     handleLogin(e) {
@@ -30,7 +26,6 @@ class Auth extends React.Component<{}, {}> {
             username: this.state.username,
             password: this.state.password
         };
-        console.info(credentials);
         authService.login(credentials);
     }
 
