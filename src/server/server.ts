@@ -3,9 +3,9 @@
 
 import * as express from 'express';
 import * as http    from 'http';
-import * as path    from 'path';
 import * as io      from 'socket.io';
-import db from './db';
+import * as db from './db';
+
 
 /**
  * The server.
@@ -43,7 +43,7 @@ class Server {
         this.port();
 
         // start db
-        db.bootstrap();
+        db.Mongo.bootstrap();
     }
 
     /**

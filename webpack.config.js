@@ -67,7 +67,7 @@ var config = [
     {
         //entry:  SERVER_DIR + '/server.js',
         entry: [
-            SERVER_DIR + '/server.ts'
+            SERVER_DIR + '/server.ts',
         ],
         target: 'node',
         node: {
@@ -76,7 +76,9 @@ var config = [
         },
         output: {
             path: BUILD_DIR,
-            filename: 'server.js'
+            filename: 'server.js',
+            library: true,
+            libraryTarget: 'commonjs2'
         },
 
         resolve: {
@@ -88,7 +90,7 @@ var config = [
             loaders: [
                 {
                     test: /\.ts?$/,
-                    loader: "ts-loader"
+                    loader: "babel-loader!ts-loader"
                 },
             ]
         },
@@ -96,3 +98,4 @@ var config = [
     }];
 
 module.exports = config;
+

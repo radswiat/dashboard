@@ -1,25 +1,35 @@
-// https://github.com/mysqljs/mysql#install
-import * as mysql from 'mysql';
+/// <reference path="../../typings/index.d.ts" />
+import mongodb = require('mongodb');
 
-class MySql {
+module DB {
 
-    private db;
+    export class Mongo {
 
-    static bootstrap() {
-        return new MySql();
-    }
+        private db;
 
-    constructor() {
-        this.db = mysql.createConnection({
-            host     : 'localhost',
-            user     : 'me',
-            password : 'secret',
-            database : 'my_db'
-        });
-        this.db.connect();
+        static bootstrap() {
+            return new Mongo();
+        }
+
+        constructor() {
+            let url = 'mongodb://localhost:27017/my_database_name';
+            this.db = mongodb.MongoClient;
+            this.db.connect(url, function (err, db) {
+                if (err) {
+                    console.log('Unable to connect to the mongoDB server. Error:', err);
+                } else {
+                    //HURRAY!! We are connected. :)
+                    console.log('Connection established to', url);
+
+                    // do some work here with the database.
+
+                    //Close connection
+                    db.close();
+                }
+            });
+        }
     }
 
 }
 
-
-export default MySql;
+export = DB;
