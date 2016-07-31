@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var nodeExternals = require('webpack-node-externals');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 // PRE-CONFIG
 var BUILD_DIR = path.resolve(__dirname, 'dev');
@@ -35,7 +36,7 @@ var config = [
             loaders: [
                 {
                     test: /\.tsx?$/,
-                    loader: "ts-loader"
+                    loader: "babel-loader!ts-loader"
                 },
                 //{
                 //    test : /\.jsx?/,
@@ -53,6 +54,12 @@ var config = [
             ]
         },
         plugins: [
+            new CleanWebpackPlugin(['dev'], {
+                root: process.cwd(),
+                verbose: true
+                // dry: false,
+                //exclude: ['shared.js']
+            }),
             new HtmlWebpackPlugin({
                 title: 'RealTimeDashboard',
                 filename: 'index.html',

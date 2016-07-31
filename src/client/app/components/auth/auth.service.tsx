@@ -6,9 +6,9 @@ class AuthService {
 
     login() {
         let socket = io();
-        console.log(socket);
-        socket.emit('login', 'kasia');
-        socket.on('loginResponse', function(msg){
+        console.warn('Auth.service:login2');
+        socket.emit('auth:login', 'kasia');
+        socket.on('auth:login:response', function(msg){
             alert(msg);
             console.warn(msg);
         });
