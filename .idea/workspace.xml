@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a56ef3d4-f8dc-4036-a169-bdb1f790ff2f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/app.tsx" afterPath="$PROJECT_DIR$/src/client/app/app.tsx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/app/components/auth/auth.component.tsx" afterPath="$PROJECT_DIR$/src/client/app/components/auth/auth.component.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings.json" afterPath="$PROJECT_DIR$/typings.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/global.d.ts" afterPath="$PROJECT_DIR$/typings/global.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/index.d.ts" afterPath="$PROJECT_DIR$/typings/index.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
     </list>
     <ignored path="_RealTimeDashboard.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,10 +48,11 @@
       <file leaf-file-name="auth.component.tsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/app/components/auth/auth.component.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+            <state relative-caret-position="480">
+              <caret line="57" column="71" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
+                <element signature="e#149#189#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -503,7 +497,7 @@
       <workItem from="1469977353693" duration="9000" />
       <workItem from="1469977382647" duration="6145000" />
       <workItem from="1469991535237" duration="9592000" />
-      <workItem from="1470069345260" duration="11470000" />
+      <workItem from="1470069345260" duration="12066000" />
     </task>
     <task id="LOCAL-00001" summary="Code structurizing">
       <created>1469651074016</created>
@@ -565,7 +559,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32853000" />
+    <option name="totallyTimeSpent" value="33449000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1016,10 +1010,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/app/components/auth/auth.component.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        <state relative-caret-position="480">
+          <caret line="57" column="71" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#149#189#0" expanded="true" />
           </folding>
         </state>
       </provider>

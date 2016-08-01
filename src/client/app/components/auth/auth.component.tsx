@@ -20,14 +20,6 @@ class Auth extends React.Component<{}, {}> {
         super();
     }
 
-    handleOpen = () => {
-        this.setState({open: true});
-    };
-
-    handleClose = () => {
-        this.setState({open: false});
-    };
-
     login(e) {
         e.preventDefault();
         let credentials = {
@@ -57,13 +49,13 @@ class Auth extends React.Component<{}, {}> {
 
         return (
             <div className='comp-auth'>
-                <RaisedButton label='Dialog' onTouchTap={this.handleOpen} />
+                <RaisedButton label='Dialog' onTouchTap={ () => { this.setState({open: true}); }} />
                 <Dialog
                     title='Dialog With Actions'
                     actions={actions}
                     modal={false}
                     open={this.state.open}
-                    onRequestClose={this.handleClose}
+                    onRequestClose={ () => { this.setState({open: false}); } }
                 >
                     <form role='form'>
                         <fieldset className='form-group'>
