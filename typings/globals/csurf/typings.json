@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/d1d106602ad25e1e70728cbd2f3a376ace2d6cde/csurf/csurf.d.ts",
+    "raw": "registry:dt/csurf#1.9.0+20160704024619",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/d1d106602ad25e1e70728cbd2f3a376ace2d6cde/csurf/csurf.d.ts"
+  }
+}

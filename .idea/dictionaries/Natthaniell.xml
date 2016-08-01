@@ -2,6 +2,7 @@
   <dictionary name="Natthaniell">
     <words>
       <w>addons</w>
+      <w>csrf</w>
       <w>devtool</w>
       <w>mongo</w>
     </words>

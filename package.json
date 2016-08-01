@@ -7,7 +7,10 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
+    "cookie-parser": "^1.4.3",
+    "csurf": "^1.9.0",
     "express": "^4.10.2",
+    "express-handlebars": "^3.0.0",
     "html-webpack-plugin": "^2.22.0",
     "mongodb": "^2.2.5",
     "mysql": "^2.11.1",
@@ -38,6 +41,7 @@
   },
   "scripts": {
     "start": "npm-watch",
+    "nodemon": "nodemon dev/server.js",
     "start_backup": "webpack -d --watch",
     "build": "webpack -d",
     "postinstall": "npm install -g typescript typings webpack & npm link typescript"
