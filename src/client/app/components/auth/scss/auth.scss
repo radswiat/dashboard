@@ -1,0 +1,18 @@
+.comp-auth{
+  width: 400px;
+  height:200px;
+  background: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -200px;
+  border: 1px solid gainsboro;
+
+  fieldset{
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+}

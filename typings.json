@@ -5,6 +5,7 @@
     "express": "registry:dt/express#4.0.0+20160708185218",
     "express-handlebars": "registry:dt/express-handlebars#0.0.0+20160316155526",
     "express-serve-static-core": "registry:dt/express-serve-static-core#4.0.0+20160715232503",
+    "material-ui": "registry:dt/material-ui#0.15.1+20160720000941",
     "mustache": "registry:dt/mustache#0.8.2+20160316155526",
     "mysql": "registry:dt/mysql#0.0.0+20160316155526",
     "node": "registry:env/node#4.0.0+20160723033700",

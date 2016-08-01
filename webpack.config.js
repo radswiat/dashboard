@@ -4,6 +4,7 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var nodeExternals = require('webpack-node-externals');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
+var WebpackNotifierPlugin = require('webpack-notifier');
 
 // PRE-CONFIG
 var BUILD_DIR = path.resolve(__dirname, 'dev');
@@ -46,6 +47,22 @@ var config = [
                 {
                     test: /\.html$/,
                     loader: "raw-loader"
+                },
+                {
+                    test: /\.css$/,
+                    loader: "style-loader!css-loader"
+                },
+                // {
+                //     test: /\.scss/,
+                //     loader: "style!sass!css"
+                // },
+                // {
+                //     test: /\.less$/,
+                //     loader: "style!css!less"
+                // },
+                {
+                    test: /\.scss$/,
+                    loader: "style!css!sass?includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
                 }
             ],
             preLoaders: [
@@ -54,17 +71,18 @@ var config = [
             ]
         },
         plugins: [
-            new CleanWebpackPlugin(['dev'], {
-                root: process.cwd(),
-                verbose: true
-                // dry: false,
-                //exclude: ['shared.js']
-            }),
+            // new CleanWebpackPlugin(['dev'], {
+            //     root: process.cwd(),
+            //     verbose: true
+            //     // dry: false,
+            //     //exclude: ['shared.js']
+            // }),
             new HtmlWebpackPlugin({
                 title: 'RealTimeDashboard',
                 filename: 'index.html',
                 template: APP_DIR + '/index.html'
-            })
+            }),
+            new WebpackNotifierPlugin({title: 'Webpack'})
         ]
     },
 
