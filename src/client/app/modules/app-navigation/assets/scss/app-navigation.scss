@@ -1,0 +1,24 @@
+$height: 35px;
+
+.module-app-navigation {
+    width: 100%;
+    height: $height;
+    background: #f3f3f3;
+
+    ul {
+        padding: 0;
+        margin: 0;
+        height: $height;
+        list-style: none;
+        li {
+            height: $height;
+            line-height: $height;
+            display: block;
+            float: left;
+            &.right{
+                display: block;
+                float: right;
+            }
+        }
+    }
+}

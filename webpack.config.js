@@ -18,7 +18,7 @@ var config = [
     {
 
         entry: [
-            APP_DIR + '/app/app.tsx'
+            APP_DIR + '/app/modules/main/main.tsx'
         ],
         output: {
             path: BUILD_DIR + '/public',

@@ -1,0 +1,8 @@
+// import main file from src/client/assets/scss/main.scss
+@import '../../../../../assets/scss/main.scss';
+
+body{
+  background: $layout-body-background;
+  margin: 0;
+  padding: 0;
+}

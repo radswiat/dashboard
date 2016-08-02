@@ -49,7 +49,7 @@ class Auth extends React.Component<{}, {}> {
 
         return (
             <div className='comp-auth'>
-                <RaisedButton label='Dialog' onTouchTap={ () => { this.setState({open: true}); }} />
+                <FlatButton label='Login' onTouchTap={ () => { this.setState({open: true}); }} />
                 <Dialog
                     title='Dialog With Actions'
                     actions={actions}
