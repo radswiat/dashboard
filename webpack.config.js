@@ -63,6 +63,10 @@ var config = [
                 {
                     test: /\.scss$/,
                     loader: "style!css!sass?includePaths[]=" + path.resolve(__dirname, "./node_modules/compass-mixins/lib")
+                },
+                {
+                    test: /\.rt$/,
+                    loader: "babel-loader!react-templates-loader?modules=es6"
                 }
             ],
             preLoaders: [

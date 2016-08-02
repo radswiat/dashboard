@@ -1,0 +1,24 @@
+
+<rt-import name="Link"          from="valuelink" />
+<rt-import name="FlatButton"    from="material-ui/FlatButton" />
+<rt-import name="Dialog"        from="material-ui/Dialog" />
+<rt-import name="Auth"          from="../auth.component" />
+<div className='comp-auth'>
+    <div onTouchTap="()=>{Auth.setState({open: true});}">TEST</div>
+    <!--() => { this.setState({open: true}); }-->
+    <FlatButton label='Login' onTouchTap="()=>{this.setState({open: true});}" />
+    <Dialog
+            title='Dialog With Actions'
+            modal={false}
+            open="{() =>{ return this.state.open}}"
+            onRequestClose="() => { this.setState({open: false}); }"
+        >
+        <form role='form'>
+            <fieldset className='form-group'>
+                <input type='text' placeholder='Username' valueLink="Link.state(this, 'username')"/>
+                <input type='text' placeholder='Password' valueLink="Link.state(this, 'password')"/>
+            </fieldset>
+            <button type='submit'>Submit</button>
+        </form>
+    </Dialog>
+</div>

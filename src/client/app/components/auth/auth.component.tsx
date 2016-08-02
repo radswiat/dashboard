@@ -8,6 +8,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+import * as template from './templates/index.rt';
+
 class Auth extends React.Component<{}, {}> {
 
     state: any = {
@@ -18,6 +20,8 @@ class Auth extends React.Component<{}, {}> {
 
     constructor() {
         super();
+        console.error('--- FLAT ---');
+        console.info(FlatButton);
     }
 
     login(e) {
@@ -47,28 +51,43 @@ class Auth extends React.Component<{}, {}> {
             />,
         ];
 
-        return (
-            <div className='comp-auth'>
-                <FlatButton label='Login' onTouchTap={ () => { this.setState({open: true}); }} />
-                <Dialog
-                    title='Dialog With Actions'
-                    actions={actions}
-                    modal={false}
-                    open={this.state.open}
-                    onRequestClose={ () => { this.setState({open: false}); } }
-                >
-                    <form role='form'>
-                        <fieldset className='form-group'>
-                            <input type='text' placeholder='Username' valueLink={ Link.state(this, 'username') }/>
-                            <input type='text' placeholder='Password' valueLink={ Link.state(this, 'password') }/>
-                        </fieldset>
-                        <button type='submit' onClick={this.login.bind(this)}>Submit</button>
-                    </form>
-                </Dialog>
-            </div>
-        );
+        return template.default();
     }
 }
 
 export {Auth};
+
+
+
+
+// // @render decorator
+// export function render(fn) {
+//     return function(target) {
+//         target.prototype["render"] = fn;
+//     }
+// // }
+//         return (
+//             <div className='comp-auth'>
+//                 <FlatButton label='Login' onTouchTap={ () => { this.setState({open: true}); }} />
+//                 <Dialog
+//                     title='Dialog With Actions'
+//                     actions={actions}
+//                     modal={false}
+//                     open={this.state.open}
+//                     onRequestClose={ () => { this.setState({open: false}); } }
+//                 >
+//                     <form role='form'>
+//                         <fieldset className='form-group'>
+//                             <input type='text' placeholder='Username' valueLink={ Link.state(this, 'username') }/>
+//                             <input type='text' placeholder='Password' valueLink={ Link.state(this, 'password') }/>
+//                         </fieldset>
+//                         <button type='submit' onClick={this.login.bind(this)}>Submit</button>
+//                     </form>
+//                 </Dialog>
+//             </div>
+//         );
+//     }
+// }
+//
+// export {Auth};
 
