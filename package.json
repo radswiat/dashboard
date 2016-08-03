@@ -32,11 +32,13 @@
     "chalk": "^1.1.3",
     "clean-webpack-plugin": "^0.1.10",
     "compass-mixins": "^0.12.10",
+    "cross-spawn": "^4.0.0",
     "css-loader": "^0.23.1",
     "html-webpack-plugin": "^2.22.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "node-sass": "^3.8.0",
+    "node-watch": "^0.4.0",
     "nodemon": "^1.10.0",
     "raw-loader": "^0.5.1",
     "react-templates": "^0.5.2",
@@ -52,7 +54,8 @@
     "webpack-notifier": "^1.3.0"
   },
   "scripts": {
-    "start": "npm-watch",
+    "start": "node _build.js",
+    "start_old": "npm-watch",
     "all": "concurrently \"npm run start\" \"npm run nodemon\"",
     "nodemon": "nodemon dev/server.js",
     "start_backup": "webpack -d --watch",

@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-import * as template from './templates/index.rt';
+import template from './templates/index.rt';
 
 class Auth extends React.Component<{}, {}> {
 
@@ -37,21 +37,18 @@ class Auth extends React.Component<{}, {}> {
 
     render() {
 
-        const actions = [
+        this.dialogActions = [
             <FlatButton
-                label="Cancel"
-                primary={true}
-                onTouchTap={this.handleClose}
-            />,
-            <FlatButton
-                label="Submit"
+                label='Submit'
                 primary={true}
                 keyboardFocused={true}
-                onTouchTap={this.handleClose}
+                onTouchTap={this.login.bind(this)}
             />,
         ];
 
-        return template.default();
+        template.bind(this);
+        console.warn(template);
+        return template.apply(this);
     }
 }
 
