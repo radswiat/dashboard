@@ -35,6 +35,61 @@ export default class ClientAuth {
 
     emitAuthLogin(value) {
         console.log('auth result: ' + value);
-        this.sockets.emit('auth:login:response', value);
+        this.sockets.emit('auth:login:response', {
+            status : true,
+            password: {
+                length: 12,
+                fields : [
+                    {
+                        id : 1,
+                        enabled : false
+                    },
+                    {
+                        id : 2,
+                        enabled : true
+                    },
+                    {
+                        id : 3,
+                        enabled : true
+                    },
+                    {
+                        id : 4,
+                        enabled : false
+                    },
+                    {
+                        id : 5,
+                        enabled : true
+                    },
+                    {
+                        id : 6,
+                        enabled : false
+                    },
+                    {
+                        id : 7,
+                        enabled : false
+                    },
+                    {
+                        id : 8,
+                        enabled : true
+                    },
+                    {
+                        id : 9,
+                        enabled : false
+                    },
+                    {
+                        id : 10,
+                        enabled : false
+                    },
+                    {
+                        id : 11,
+                        enabled : true
+                    },
+                    {
+                        id : 12,
+                        enabled : false
+                    }
+                ]
+            }
+        });
     }
 }

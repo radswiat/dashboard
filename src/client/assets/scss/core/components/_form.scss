@@ -1,0 +1,19 @@
+form{
+
+    fieldset{
+        border: 0;
+        outline: none;
+    }
+
+    input{
+        $height: 35px;
+        width: 100%;
+        height: $height;
+        border: 1px solid darkgray;
+        outline: none;
+        background: white;
+        padding: 0px 10px;
+        line-height: $height;
+        overflow: hidden;
+    }
+}

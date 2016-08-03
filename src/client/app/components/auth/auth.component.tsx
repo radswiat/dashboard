@@ -1,10 +1,7 @@
+require('!style!css!sass!./scss/auth.scss');
 import * as React from 'react';
 import authService from './auth.service';
-import Link from 'valuelink';
-require('!style!css!sass!./scss/auth.scss');
-import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import * as injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
@@ -15,39 +12,71 @@ class Auth extends React.Component<{}, {}> {
     state: any = {
         username: '',
         password: '',
+        loginInProgress: false,
+        loginState: 0,
         open: false
     }
 
     constructor() {
         super();
-        console.error('--- FLAT ---');
-        console.info(FlatButton);
     }
 
-    login(e) {
+    loginBtn(e) {
         e.preventDefault();
+        if (this.state.loginState === 0) {
+            this.loginBasicStep();
+        }else {
+            this.loginFinalStep();
+        }
+    }
+
+    loginBasicStep(e) {
         let credentials = {
             username: this.state.username,
             password: this.state.password
         };
+        this.setState({'loginInProgress' : true});
         console.error('credentials');
         console.info(credentials);
-        authService.login(credentials);
+        authService.login(credentials).then((data) => {
+            this.loginAdvancedStep(data);
+        });
     }
+
+    loginAdvancedStep(data) {
+        this.setState({loginState: 1, loginInProgress: false, loginAdvancedPassword : data.password});
+    }
+
+    loginFinalStep() {
+        this.close();
+    }
+
+    onLoginFailed() {
+
+    }
+
+    close() {
+        this.setState({open: false, loginState: 0});
+    }
+
+
 
     render() {
 
+        this.progressStyles = {
+            'textAlign' : 'center'
+        }
+
         this.dialogActions = [
             <FlatButton
-                label='Submit'
+                label='Log in'
                 primary={true}
                 keyboardFocused={true}
-                onTouchTap={this.login.bind(this)}
+                onTouchTap={this.loginBtn.bind(this)}
             />,
         ];
 
         template.bind(this);
-        console.warn(template);
         return template.apply(this);
     }
 }

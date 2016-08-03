@@ -1,11 +1,46 @@
 // import main file from src/client/assets/scss/main.scss
 @import '../../../../assets/scss/main.scss';
 
-.comp-auth{
-  fieldset{
-    margin: 0;
-    padding: 0;
-    border: none;
-    background: none;
-  }
+.comp-auth {
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+}
+
+.comp-auth-advanced-password-fields {
+    $width: 32px;
+    .labels{
+        width: 100%;
+        overflow: hidden;
+        height:auto;
+        div{
+            width: $width;
+            height: 25px;
+            display: inline-block;
+            text-align: center;
+        }
+    }
+    .fields{
+        width: 100%;
+        overflow: hidden;
+        height:auto;
+        div{
+            width: $width;
+            display: inline-block;
+            padding: 0;
+            input{
+                width: $width;
+                text-align: center;
+                padding: 0;
+                &.disabled{
+                    background: #a9a9a9;
+                }
+            }
+        }
+
+    }
+
 }

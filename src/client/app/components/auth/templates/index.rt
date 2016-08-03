@@ -1,21 +1,56 @@
-<rt-import name="default"       as="Link"          from="valuelink" />
-<rt-import name="default"       as="FlatButton"    from="material-ui/FlatButton" />
-<rt-import name="default"       as="Dialog"        from="material-ui/Dialog" />
+<rt-import name="default"       as="Link"               from="valuelink" />
+<rt-import name="default"       as="FlatButton"         from="material-ui/FlatButton" />
+<rt-import name="default"       as="Dialog"             from="material-ui/Dialog" />
+<rt-import name="default"       as="CircularProgress"   from="material-ui/CircularProgress" />
 
 <div className='comp-auth'>
     <FlatButton label='Login' onTouchTap="()=>{this.setState({open: true});}" />
     <Dialog
-            title='Dialog With Actions'
+            className="dialog-default"
+            contentClassName="dialog-wrapper"
+            bodyClassName="content-wrapper"
+            actionsContainerClassName="actions-wrapper"
+            title='Log in'
             modal={false}
             actions="{this.dialogActions}"
             open="{this.state.open}"
             onRequestClose="() => { this.setState({open: false}); }"
     >
-        <form role='form'>
-            <fieldset className='form-group'>
-                <input type='text' placeholder='Username' valueLink="{Link.state(this, 'username')}"/>
-                <input type='text' placeholder='Password' valueLink="{Link.state(this, 'password')}"/>
-            </fieldset>
-        </form>
+
+        <div rt-if="this.state.loginInProgress">
+            <div style="text-align: center">
+                <CircularProgress size={1} innerStyle="{this.progressStyles}"/>
+            </div>
+        </div>
+
+        <div rt-if="!this.state.loginInProgress && this.state.loginState===0">
+            <form role='form'>
+                <fieldset className='form-group'>
+                    <input type='text' placeholder='Username' valueLink="{Link.state(this, 'username')}"/>
+                    <input type='text' placeholder='Password' valueLink="{Link.state(this, 'password')}"/>
+                </fieldset>
+            </form>
+        </div>
+
+        <div rt-if="!this.state.loginInProgress && this.state.loginState===1">
+            <form>
+                <div className="comp-auth-advanced-password-fields">
+                    <div class="labels">
+                        <div
+                                key={field.id}
+                                rt-repeat="field in this.state.loginAdvancedPassword.fields">{field.id}</div>
+                    </div>
+                    <div class="fields">
+                        <div key={field.id} rt-repeat="field in this.state.loginAdvancedPassword.fields">
+                            <input type="text" rt-if="field.enabled">
+                            <input type="text" rt-if="!field.enabled" disabled="disabled" className="disabled">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
     </Dialog>
 </div>
