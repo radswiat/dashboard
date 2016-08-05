@@ -14,7 +14,7 @@
             modal={false}
             actions="{this.dialogActions}"
             open="{this.state.open}"
-            onRequestClose="() => { this.setState({open: false}); }"
+            onRequestClose="() => { this.setState({open: false, loginState : 1}); }"
     >
 
         <div rt-if="this.state.loginInProgress">
@@ -24,6 +24,11 @@
         </div>
 
         <div rt-if="!this.state.loginInProgress && this.state.loginState===0">
+            <h3>Error</h3>
+            <div>{this.state.loginErrorMessage}</div>
+        </div>
+
+        <div rt-if="!this.state.loginInProgress && this.state.loginState===1">
             <form role='form'>
                 <fieldset className='form-group'>
                     <input type='text' placeholder='Username' valueLink="{Link.state(this, 'username')}"/>
@@ -32,17 +37,17 @@
             </form>
         </div>
 
-        <div rt-if="!this.state.loginInProgress && this.state.loginState===1">
+        <div rt-if="!this.state.loginInProgress && this.state.loginState===2">
             <form>
                 <div className="comp-auth-advanced-password-fields">
                     <div class="labels">
                         <div
                                 key={field.id}
-                                rt-repeat="field in this.state.loginAdvancedPassword.fields">{field.id}</div>
+                                rt-repeat="field in this.state.requestedPassword.fields">{field.id}</div>
                     </div>
                     <div class="fields">
-                        <div key={field.id} rt-repeat="field in this.state.loginAdvancedPassword.fields">
-                            <input type="text" rt-if="field.enabled">
+                        <div key={field.id} rt-repeat="field in this.state.requestedPassword.fields">
+                            <input type="text" rt-if="field.enabled" onChange="{this.handlePasswordKey.bind(this, field.id)}">
                             <input type="text" rt-if="!field.enabled" disabled="disabled" className="disabled">
                         </div>
                     </div>

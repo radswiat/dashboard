@@ -10,53 +10,100 @@ import template from './templates/index.rt';
 class Auth extends React.Component<{}, {}> {
 
     state: any = {
-        username: '',
-        password: '',
-        loginInProgress: false,
-        loginState: 0,
-        open: false
+        // dialog status
+        open: false,
+        // login generat
+        loginInProgress : false,
+        loginState : 1,
+        // login basic
+        username : '',
+        password : '',
+        // login advanced
+        requestedPassword : null,
+        providedPasswordKeys : {}
     }
 
     constructor() {
         super();
     }
 
+    /**
+     * Handle login button
+     * @param e
+     */
     loginBtn(e) {
         e.preventDefault();
-        if (this.state.loginState === 0) {
-            this.loginBasicStep();
-        }else {
-            this.loginFinalStep();
+        if (this.state.loginState === 1) {
+            this.doLoginBasic();
+        }else if(this.state.loginState === 2) {
+            this.doLoginAdvanced();
         }
     }
 
-    loginBasicStep(e) {
+    /**
+     * Login basic - step 0,
+     * username & password
+     * @param e
+     */
+    doLoginBasic() {
         let credentials = {
             username: this.state.username,
             password: this.state.password
         };
         this.setState({'loginInProgress' : true});
-        console.error('credentials');
-        console.info(credentials);
+        // when ready
         authService.login(credentials).then((data) => {
-            this.loginAdvancedStep(data);
+            this.setState({
+                loginState: 2,
+                loginInProgress: false,
+                requestedPassword : data.password
+            });
+        }, this.onLoginFailed.bind(this));
+    }
+
+    /**
+     * Login advances - step 1
+     * password by requested keys
+     */
+    doLoginAdvanced() {
+        console.warn('doLoginAdvanced');
+        console.log(this.state.providedPasswordKeys);
+        authService.loginAdvanced(this.state.providedPasswordKeys).then(() => {
+            console.warn('doLoginAdvanced:success');
+            this.close();
+        }, () => {
+            console.warn('doLoginAdvanced:failed');
         });
     }
 
-    loginAdvancedStep(data) {
-        this.setState({loginState: 1, loginInProgress: false, loginAdvancedPassword : data.password});
+    /**
+     * Handle each password key
+     * merge them with existing keys
+     * @param id
+     * @param e
+     */
+    handlePasswordKey(id, e) {
+        let t = {};
+        t[id] = e.target.value;
+        let mergedProvidedPasswordKeys = _.merge(this.state.providedPasswordKeys, t);
+        this.setState({providedPasswordKeys : mergedProvidedPasswordKeys});
     }
 
-    loginFinalStep() {
-        this.close();
-    }
-
-    onLoginFailed() {
-
+    onLoginFailed(data) {
+        console.error('failed login');
+        console.info(data);
+        this.setState({
+            loginState: 0,
+            loginInProgress: false,
+            loginErrorMessage : data.message
+        });
     }
 
     close() {
-        this.setState({open: false, loginState: 0});
+        this.setState({
+            open: false,
+            loginState: 1
+        });
     }
 
 

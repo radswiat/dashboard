@@ -10,11 +10,30 @@ class AuthService {
     login(credentials) {
         let defer = Q.defer();
         console.warn('Auth.service:login');
+        console.info(credentials);
         // console.info(io);
         // console.info(socket);
         socket.emit('auth:login', credentials);
         socket.once('auth:login:response', function(data){
-            defer.resolve(data);
+            console.warn(data);
+            if (data.status) {
+                defer.resolve(data);
+            }else {
+                defer.reject(data);
+            }
+        });
+        return defer.promise;
+    }
+
+    loginAdvanced(credentials) {
+        let defer = Q.defer();
+        socket.emit('auth:login:advanced', credentials);
+        socket.once('auth:login:advanced:response', (data) => {
+            if (data.status) {
+                defer.resolve(data);
+            }else {
+                defer.reject(data);
+            }
         });
         return defer.promise;
     }
